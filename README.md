@@ -14,5 +14,5 @@ One project to rule all the Kaggle challenges
  - Listing current dependencies: `pip freeze`
 
 ### Starting application
- - From command line: `run.sh`
+ - From command line: `sh run`
  - From Docker: `docker-compose up`
