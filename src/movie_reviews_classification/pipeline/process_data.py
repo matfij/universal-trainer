@@ -17,7 +17,7 @@ def process_data(span: str) -> str:
 
     # remove stop words
     base_path = os.getenv('BASE_PATH', '')
-    path = f'{base_path}bag_of_words/data/stop_words.txt'
+    path = f'{base_path}movie_reviews_classification/data/stop_words.txt'
 
     with open(path, 'r') as file:
         content = file.read()
