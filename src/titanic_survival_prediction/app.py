@@ -1,16 +1,16 @@
-from titanic_survival_prediction.pipeline.prepare_data import prepare_data
-from titanic_survival_prediction.pipeline.train_model import train_model
+from titanic_survival_prediction.pipeline import data_processing as data
+from titanic_survival_prediction.pipeline import model_training as train
+from titanic_survival_prediction.pipeline import model_consuming as consume
 
 
 def run():
 
-    training_set, test_set = prepare_data()
+    print('preparing data')
+    training_set = data.prepare_training_data('/src/titanic_survival_prediction/data/train.csv')
+    test_set = data.prepare_test_data('/src/titanic_survival_prediction/data/test.csv')
 
-    model = train_model(training_set)
-    
+    print('training model')
+    svm_model = train.train_svm(training_set)
 
-    # choose model
-
-    # train model
-
-    # make predictions
+    print('testing model')
+    consume.test_svm(svm_model, test_set)

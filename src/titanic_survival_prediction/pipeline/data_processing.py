@@ -1,6 +1,4 @@
-from typing import Tuple
 import pandas as pd
-import matplotlib
 import matplotlib.pyplot as plt
 
 
@@ -12,6 +10,12 @@ def prepare_training_data(path: str) -> pd.DataFrame:
     data['Embarked'].replace({'C': 1, 'Q': 2, 'S': 3}, inplace=True)
     data['Title'] = data['Name'].map(
         lambda x: x.split(',')[1].split('.')[0].strip()
+    )
+    print(data['Title'].value_counts())
+    data['Title'].replace(
+        {'Mr': 0, 'Miss': 2, 'Mrs': 3, 'Master': 4, 'Dr': 5, 'Rev': 6, 'Mlle': 7, 'Major': 8,
+        'Col': 10, 'the Countess': 10, 'Capt': 10, 'Ms': 10, 'Sir': 10, 'Lady': 10, 'Mme': 10, 'Don': 10,  'Jonkheer': 10}, 
+        inplace=True
     )
 
     _, axs_hist = plt.subplots(2, 2)
@@ -60,8 +64,34 @@ def prepare_training_data(path: str) -> pd.DataFrame:
     training_data['Age'] = data['Age']
     training_data['Title'] = data['Title']
 
-    return training_data, training_data
+    return training_data
 
 
-def prepare_test_data() -> pd.DataFrame: 
-    pass
+def prepare_test_data(path: str) -> pd.DataFrame: 
+
+    data = pd.read_csv(path)
+
+    data['Sex'].replace({'male': 0, 'female': 1}, inplace=True)
+    data['Embarked'].replace({'C': 1, 'Q': 2, 'S': 3}, inplace=True)
+    data['Title'] = data['Name'].map(
+        lambda x: x.split(',')[1].split('.')[0].strip()
+    )
+    data['Title'].replace(
+        {'Mr': 0, 'Miss': 2, 'Mrs': 3, 'Master': 4, 'Dr': 5, 'Rev': 6, 'Mlle': 7, 'Major': 8,
+        'Col': 10, 'the Countess': 10, 'Capt': 10, 'Ms': 10, 'Sir': 10, 'Lady': 10, 'Mme': 10, 'Don': 10, 'Jonkheer': 10,
+        'Dona': 10}, 
+        inplace=True
+    )
+    data['Age'] = data['Age'].fillna(data['Age'].mean())
+    data['Fare'] = data['Fare'].fillna(data['Fare'].mean())
+
+    test_data = pd.DataFrame({
+        'Pclass': data['Pclass'],
+        'SibSp': data['SibSp'],
+        'Parch': data['Parch'],
+        'Sex': data['Sex'],
+        'Age': data['Age'],
+        'Title': data['Title'],
+    })
+
+    return test_data

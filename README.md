@@ -2,9 +2,13 @@
 One project to rule all the Kaggle challenges
 
 ### Requirements
- - Python 3.6+ (3.10.0rc1 was used for this project)
- - Docker, docker-compose (optional)
+ - Python 3.6+ (3.9 was used for this project)
+ - Docker, docker-compose, Make*
  - Upgrade pip: `pip install --upgrade pip`
+
+### Quick start*
+ - make docker.build
+ - make docker.run
 
 ### Packages
  - Virtual environment setup: `py -m venv .venv`
