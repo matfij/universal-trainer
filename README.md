@@ -14,8 +14,6 @@ One project to rule all the Kaggle challenges
  - Virtual environment setup: `py -m venv .venv`
  - Activating environment: `.venv\Scripts\activate`
  - Installing requirements: `pip install -r requirements.txt`
- - Adding new dependencies: `pip install <package_name>`
- - Listing current dependencies: `pip freeze`
 
 ### Starting application
  - From command line: `sh run`
