@@ -1,4 +1,8 @@
+from graph import _default_graph
+
+
 class Operation:
+    '''Mathematical operation'''
     
     def __init__(self, input_nodes=[]) -> None:
         self.input_nodes = input_nodes
@@ -6,6 +10,8 @@ class Operation:
 
         for node in input_nodes:
             node.output_nodes.append(self)
+
+        _default_graph.operations.append(self)
 
     def compute(self):
         pass
