@@ -1,4 +1,4 @@
-from graph import _default_graph
+from core.graph import _default_graph
 
 
 class Placeholder:

@@ -1,5 +1,5 @@
 from typing import Any
-from operations import Operation
+from core.operations import Operation
 
 
 def traverser_postorder(operation: Operation):

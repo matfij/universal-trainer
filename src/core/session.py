@@ -1,8 +1,8 @@
 import numpy as np
 
-from operations import Operation
-from definitions import Placeholder, Variable
-from utilities import traverser_postorder
+from core.operations import Operation
+from core.definitions import Placeholder, Variable
+from core.utilities import traverser_postorder
 
 
 class Session():
